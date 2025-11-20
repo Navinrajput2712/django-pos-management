@@ -1,94 +1,190 @@
-📌 Django POS Management Application
+# 🎯 Django POS Management Application
 
-A lightweight and efficient Point of Sale (POS) management system built with Django. This web-based system helps businesses manage daily sales transactions, products, categories, and reports efficiently.
+A fully functional **Point of Sale (POS) Management System** built using
+**Django**.\
+This system helps businesses manage **products, categories,
+subcategories, and POS transactions** smoothly and efficiently.
 
-🚀 Features
-🔹 Product Management
+------------------------------------------------------------------------
 
-Add, update, delete products
+## 🚀 Features
 
-Manage pricing and availability
+✔ Manage **Products**\
+✔ Manage **Categories & Subcategories**\
+✔ Manage **Sales Transactions**\
+✔ Auto-Generated **Transaction Codes**\
+✔ Dashboard showing **Today's Sales Summary**\
+✔ Full **CRUD Operations**\
+✔ Clean, professional UI\
+✔ Screenshots included\
+✔ Ready for deployment
 
-🔹 Category Management
+------------------------------------------------------------------------
 
-Organize products under categories
+## 🛠️ Tech Stack
 
-🔹 Sales Transactions
+  Layer      Technology
+  ---------- ---------------------------------------
+  Backend    Django 3.2
+  Frontend   HTML • CSS • JavaScript
+  Database   SQLite
+  Packages   Django CKEditor, Crispy Forms, Pillow
 
-Add sales entries
+------------------------------------------------------------------------
 
-System automatically generates unique transaction codes
+## 📁 Project Setup Guide
 
-View daily sales and transaction history
+### **1️⃣ Clone the Repository**
 
-🔹 Dashboard
+``` bash
+git clone https://github.com/Navinrajput2712/django-pos-management.git
+cd django-pos-management
+```
 
-Displays today’s transactions
+### **2️⃣ Create Virtual Environment**
 
-Shows total sales amount
+``` bash
+python -m venv env
+```
 
-Quick summary of business performance
+### **3️⃣ Activate Virtual Environment**
 
-🔹 User Authentication
+**Windows**
 
-Login page for secure access
+``` bash
+env\Scriptsctivate
+```
 
-Admin panel for managing all data
+**Mac/Linux**
 
-🛠️ Getting Started
+``` bash
+source env/bin/activate
+```
 
-Follow these instructions to set up and run the project on your local machine.
+### **4️⃣ Install Requirements**
 
-📁 Project Setup Guide
-1️⃣ Create & Activate Virtual Environment
-python -m venv venv
-venv\Scripts\activate      # Windows
-source venv/bin/activate   # macOS/Linux
-
-2️⃣ Install Python Dependencies
-
-Install all required packages:
-
+``` bash
 pip install -r requirements.txt
+```
 
-3️⃣ Apply Migrations
+### **5️⃣ Apply Migrations**
+
+``` bash
 python manage.py makemigrations
 python manage.py migrate
+```
 
-4️⃣ Create Superuser (Admin Login)
-python manage.py createsuperuser
+### **6️⃣ Run the Server**
 
-
-Enter:
-
-Username
-
-Email
-
-Password
-
-5️⃣ Start the Django Server
+``` bash
 python manage.py runserver
+```
 
+Server will start at:
 
-Backend runs on:
-👉 http://127.0.0.1:8000
+    http://127.0.0.1:8000
 
-🌐 Frontend (If Included)
+------------------------------------------------------------------------
 
-If the project contains a frontend folder:
+## 📘 Folder Structure
 
-Install Node.js dependencies:
-npm install
+    django-pos-management/
+    │── manage.py
+    │── db.sqlite3
+    │── requirements.txt
+    │── README.md
+    │
+    ├── pos/                      
+    │   ├── models.py             
+    │   ├── views.py              
+    │   ├── urls.py               
+    │   ├── admin.py              
+    │   └── templates/pos/        
+    │
+    ├── static/                  
+    ├── media/                    
+    └── screens/                  
 
-Start React/JS frontend:
-npm start
+------------------------------------------------------------------------
 
+## 🧾 Code Snippets
 
-Frontend usually runs on:
-👉 http://localhost:3000
+### **Product Model**
 
-📂 Available Scripts
-Command	Description
-python manage.py runserver	Run Django backend
-npm start	Run frontend (if included)
+``` python
+class Product(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    price = models.FloatField()
+    quantity = models.IntegerField()
+    description = models.TextField(blank=True)
+    image = models.ImageField(upload_to='products/', blank=True)
+
+    def __str__(self):
+        return self.name
+```
+
+### **POS Add Item Logic**
+
+``` python
+def add_to_pos(request, product_id):
+    product = Product.objects.get(id=product_id)
+    cart = request.session.get('cart', [])
+
+    cart.append({
+        "id": product.id,
+        "name": product.name,
+        "price": product.price,
+        "quantity": 1
+    })
+
+    request.session['cart'] = cart
+    return redirect("pos_page")
+```
+
+### **Dashboard View**
+
+``` python
+def dashboard(request):
+    today = date.today()
+    orders_today = Order.objects.filter(created_at__date=today)
+    total_sales = sum(order.total_amount for order in orders_today)
+
+    return render(request, "dashboard.html", {
+        "orders_today": orders_today,
+        "total_sales": total_sales
+    })
+```
+
+------------------------------------------------------------------------
+
+## 🖼️ Screenshots
+
+### 🔐 Login Page
+
+`<img src="https://github.com/Navinrajput2712/django-pos-management/blob/main/screens/screen1.png" height="400"/>`{=html}
+
+### 📊 Dashboard
+
+`<img src="https://github.com/Navinrajput2712/django-pos-management/blob/main/screens/screen01.png" height="400"/>`{=html}
+
+### 🏷️ Category Page
+
+`<img src="https://github.com/Navinrajput2712/django-pos-management/blob/main/screens/screen2.png" height="400"/>`{=html}
+
+### 📂 Subcategory Page
+
+`<img src="https://github.com/Navinrajput2712/django-pos-management/blob/main/screens/screen3.png" height="400"/>`{=html}
+
+### 📦 Product Page
+
+`<img src="https://github.com/Navinrajput2712/django-pos-management/blob/main/screens/screen4.png" height="400"/>`{=html}\
+`<img src="https://github.com/Navinrajput2712/django-pos-management/blob/main/screens/screen8.png" height="400"/>`{=html}
+
+### 🧾 POS Add Page
+
+`<img src="https://github.com/Navinrajput2712/django-pos-management/blob/main/screens/screen7.png" height="400"/>`{=html}
+
+### 📑 Order Page
+
+`<img src="https://github.com/Navinrajput2712/django-pos-management/blob/main/screens/screen6.png" height="400"/>`{=html}
