@@ -158,33 +158,35 @@ def dashboard(request):
 
 ------------------------------------------------------------------------
 
-## 🖼️ Screenshots
+## SCREENSHOTS:**
 
-### 🔐 Login Page
 
-`<img src="https://github.com/Navinrajput2712/django-pos-management/blob/main/screens/screen1.png" height="400"/>`{=html}
+<h2>Login Page</h2>
+<img src="https://github.com/nusratdevo/django_pos_management/blob/main/screens/screen1.png" height="400">
+---
 
-### 📊 Dashboard
+<h2>Dashbord Page</h2>
+<img src="https://github.com/nusratdevo/django_pos_management/blob/main/screens/screen01.png" height="400">
+---
 
-`<img src="https://github.com/Navinrajput2712/django-pos-management/blob/main/screens/screen01.png" height="400"/>`{=html}
+<h2>Category Page</h2>
+<img src="https://github.com/nusratdevo/django_pos_management/blob/main/screens/screen2.png" height="400">
+---
 
-### 🏷️ Category Page
+<h2>SubCategory Page</h2>
+<img src="https://github.com/nusratdevo/django_pos_management/blob/main/screens/screen3.png" height="400">
+---
 
-`<img src="https://github.com/Navinrajput2712/django-pos-management/blob/main/screens/screen2.png" height="400"/>`{=html}
+<h2>Product Page</h2>
+<img src="https://github.com/nusratdevo/django_pos_management/blob/main/screens/screen4.png" height="400">
+---
+<img src="https://github.com/nusratdevo/django_pos_management/blob/main/screens/screen8.png" height="400">
+---
 
-### 📂 Subcategory Page
+<h2>Pos Add Page</h2>
+<img src="https://github.com/nusratdevo/django_pos_management/blob/main/screens/screen7.png" height="400">
+---
 
-`<img src="https://github.com/Navinrajput2712/django-pos-management/blob/main/screens/screen3.png" height="400"/>`{=html}
-
-### 📦 Product Page
-
-`<img src="https://github.com/Navinrajput2712/django-pos-management/blob/main/screens/screen4.png" height="400"/>`{=html}\
-`<img src="https://github.com/Navinrajput2712/django-pos-management/blob/main/screens/screen8.png" height="400"/>`{=html}
-
-### 🧾 POS Add Page
-
-`<img src="https://github.com/Navinrajput2712/django-pos-management/blob/main/screens/screen7.png" height="400"/>`{=html}
-
-### 📑 Order Page
-
-`<img src="https://github.com/Navinrajput2712/django-pos-management/blob/main/screens/screen6.png" height="400"/>`{=html}
+<h2>Order Page</h2>
+<img src="https://github.com/nusratdevo/django_pos_management/blob/main/screens/screen6.png" height="400">
+---
